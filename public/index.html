@@ -18,22 +18,23 @@
       <button id="send-button">Send</button>
     </form>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
 
-    document.getElementById('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      socket.emit('chat message', document.getElementById('m').value);
-      document.getElementById('m').value = '';
-      return false;
+    socket.on('chat message', function(msg) {
+      const messagesList = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.textContent = msg;
+      messagesList.appendChild(li);
     });
 
-    socket.on('chat message', function(msg){
-      const ul = document.getElementById('messages');
-      const li = document.createElement('li');
-      li.appendChild(document.createTextNode(msg));
-      ul.appendChild(li);
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const message = document.getElementById('m').value;
+      socket.emit('chat message', message);
+      document.getElementById('m').value = '';
+      return false;
     });
   </script>
 </body>
