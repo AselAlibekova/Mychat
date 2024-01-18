@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyChat</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="logo-container">
+    <img src="https://mychatbrasil.com/site/images/logo/3.png" alt="MyChat Logo">
+  </div>
+  <div id="chat-container">
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="m" autocomplete="off" />
+      <button id="send-button">Send</button>
+    </form>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      socket.emit('chat message', document.getElementById('m').value);
+      document.getElementById('m').value = '';
+      return false;
+    });
+
+    socket.on('chat message', function(msg){
+      const ul = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(msg));
+      ul.appendChild(li);
+    });
+  </script>
+</body>
+</html>
