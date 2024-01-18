@@ -1,0 +1,80 @@
+body {
+  background-color: #222; /* Цвет фона темный */
+  color: #fff; /* Цвет текста светлый */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Изменено на выравнивание по центру */
+  justify-content: center; /* Изменено на выравнивание по центру */
+  height: 100vh;
+}
+#chat-container {
+  width: 600px; /* Увеличьте этот параметр для увеличения ширины чата */
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#logo-container {
+  margin-top: 50px;
+  display: flex; /* Добавлено для выравнивания изображения и контейнера */
+  align-items: center; /* Выравнивание по центру по вертикали */
+}
+
+#logo-container img {
+  width: 300px; /* Уменьшен размер изображения в два раза */
+  margin-right: 20px; /* Отступ справа для разделения от контейнера */
+}
+#messages {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 400px;
+  width: 95%; /* Растянуть блок сообщений на всю ширину чата */
+}
+
+#messages li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#messages li:nth-child(even) {
+  background-color: hsl(0, 0%, 45%);
+}
+
+#messages li:nth-child(odd) {
+  background-color: hsl(0, 0%, 22%);
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #444;
+}
+
+
+#m {
+  flex: 1;
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #555; /* Цвет фона строки ввода */
+  color: #fff; /* Цвет текста в строке ввода */
+}
+
+#send-button {
+  padding: 8px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
